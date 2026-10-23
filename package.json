@@ -1,0 +1,17 @@
+{
+  "name": "bloom-filter-utils",
+  "version": "0.1.0",
+  "description": "Bloom filter implementation for JavaScript with configurable size and false-positive rate.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {}
+}

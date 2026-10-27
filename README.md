@@ -31,3 +31,10 @@ The `contains` result is a probability, not a fact. A return of `true` means "po
 This library does not support removal. Adding then "removing" an item would require clearing bits that other items may share, producing false negatives — which a Bloom filter must never do. If you need removal, use a counting Bloom filter (not this one).
 
 Items are hashed as-is: strings are UTF-8 encoded, `Uint8Array` is taken byte-for-byte. There is no normalisation, so `'café'` and `'cafe\u0301'` are different items to the filter. Normalise before adding if your notion of equality requires it.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
